@@ -1,6 +1,9 @@
 define osrm::instance (
-  $ensure='present',
-  $ini_template=undef,
+  $data_dir,
+  $ensure  = 'present',
+  $threads = 8,
+  $ip      = '127.0.0.1',
+  $port    = '5000',
 ) {
 
   $service_name = "osrm-${name}"
@@ -19,7 +22,7 @@ define osrm::instance (
 
   file {"/etc/osrm/server-${name}.ini":
     ensure  => file,
-    content => $ini_content,
+    content => template('osrm/server.ini.erb'),
   }
 
   $service_ensure = $ensure ? {
