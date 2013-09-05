@@ -14,12 +14,6 @@ define osrm::instance (
     content => template("${module_name}/init.erb"),
   }
 
-  if $ini_template != undef {
-    $ini_content = template($ini_template)
-  } else {
-    $ini_content = undef
-  }
-
   file {"/etc/osrm/server-${name}.ini":
     ensure  => file,
     content => template('osrm/server.ini.erb'),
