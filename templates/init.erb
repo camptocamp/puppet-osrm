@@ -17,7 +17,7 @@ NAME=osrm-<%= @name %>
 USER=osrm
 DAEMON=/usr/bin/osrm-routed
 SERVER_INI=/etc/osrm/server-<%= @name %>.ini
-DAEMON_ARGS="$SERVER_INI >>/var/log/osrm/routed-<%= @name %>.log 2>&1"
+DAEMON_ARGS="-c $SERVER_INI >>/var/log/osrm/routed-<%= @name %>.log 2>&1"
 PIDFILE=/var/run/$NAME.pid
 SCRIPTNAME=/etc/init.d/$NAME
 
