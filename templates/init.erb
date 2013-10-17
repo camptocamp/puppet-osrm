@@ -17,7 +17,8 @@ NAME=osrm-<%= @name %>
 USER=osrm
 DAEMON=/usr/bin/osrm-routed
 SERVER_INI=/etc/osrm/server-<%= @name %>.ini
-DAEMON_ARGS="-c $SERVER_INI >>/var/log/osrm/routed-<%= @name %>.log 2>&1"
+DAEMON_ARGS="-c $SERVER_INI"
+LOGFILE=/var/log/osrm/$NAME.log
 PIDFILE=/var/run/$NAME.pid
 SCRIPTNAME=/etc/init.d/$NAME
 
@@ -34,7 +35,7 @@ SCRIPTNAME=/etc/init.d/$NAME
 do_start()
 {
 	start-stop-daemon --start --quiet --pidfile $PIDFILE --background --user $USER --chuid $USER --exec $DAEMON --test > /dev/null || return 1
-	start-stop-daemon --start --quiet --pidfile $PIDFILE --background --user $USER --chuid $USER --exec $DAEMON -- $DAEMON_ARGS || return 2
+	start-stop-daemon --start --quiet --make-pidfile --pidfile $PIDFILE --background --user $USER --chuid $USER --exec $DAEMON -- $DAEMON_ARGS >> $LOGFILE 2>&1 || return 2
 }
 
 #
@@ -42,7 +43,7 @@ do_start()
 #
 do_stop()
 {
-	start-stop-daemon --stop --quiet --user $USER --retry=TERM/30/KILL/5 --pidfile $PIDFILE --name $NAME
+	start-stop-daemon --stop --quiet --user $USER --retry=TERM/30/KILL/5 --pidfile $PIDFILE
 	RETVAL="$?"
 	[ "$RETVAL" = 2 ] && return 2
 	rm -f $PIDFILE
@@ -67,7 +68,7 @@ case "$1" in
 	esac
 	;;
   status)
-       status_of_proc "$DAEMON" "$NAME" && exit 0 || exit $?
+       status_of_proc -p $PIDFILE "$DAEMON" "$NAME" && exit 0 || exit $?
        ;;
   restart|force-reload)
 	log_daemon_msg "Restarting $DESC" "$NAME"
