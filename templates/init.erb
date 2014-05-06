@@ -35,7 +35,7 @@ SCRIPTNAME=/etc/init.d/$NAME
 do_start()
 {
 	start-stop-daemon --start --quiet --pidfile $PIDFILE --background --user $USER --chuid $USER --exec $DAEMON --test > /dev/null || return 1
-	start-stop-daemon --start --quiet --make-pidfile --pidfile $PIDFILE --background --user $USER --chuid $USER --exec $DAEMON -- $DAEMON_ARGS >> $LOGFILE 2>&1 || return 2
+	start-stop-daemon --start --quiet --make-pidfile --no-close --pidfile $PIDFILE --background --user $USER --chuid $USER --exec $DAEMON -- $DAEMON_ARGS >> $LOGFILE 2>&1 || return 2
 }
 
 #
