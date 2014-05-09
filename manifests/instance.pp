@@ -26,8 +26,10 @@ define osrm::instance (
   service {$service_name:
     ensure    => $service_ensure,
     hasstatus => true,
-    require   => [ File["/etc/init.d/${service_name}"],
-                   Class['osrm'] ],
+    require   => [
+      File["/etc/init.d/${service_name}"],
+      Class['osrm']
+    ],
   }
-    
+
 }
