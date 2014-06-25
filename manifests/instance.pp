@@ -14,11 +14,6 @@ define osrm::instance (
     content => template("${module_name}/init.erb"),
   }
 
-  file {"/etc/osrm/server-${name}.ini":
-    ensure  => file,
-    content => template('osrm/server.ini.erb'),
-  }
-
   $service_ensure = $ensure ? {
     'present' => 'running',
     'absent'  => 'stopped',
