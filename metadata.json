@@ -1,0 +1,27 @@
+{
+  "name": "camptocamp-osrm",
+  "version": "1.0.0",
+  "author": "Camptocamp",
+  "summary": "Puppet OSRM module",
+  "license": "Apache 2.0",
+  "source": "https://github.com/camptocamp/puppet-osrm",
+  "project_page": "https://github.com/camptocamp/puppet-osrm",
+  "issues_url": "https://github.com/camptocamp/puppet-osrm/issues",
+  "requirements": [
+    {
+      "name": "puppet",
+      "version_requirement": "3.x"
+    }
+  ],
+  "operatingsystem_support": [
+    {
+      "operatingsystem": "Debian",
+      "operatingsystemrelease": [
+        "7"
+      ]
+    }
+  ],
+  "puppet_version": [
+    "3.7"
+  ]
+}
