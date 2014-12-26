@@ -7,6 +7,8 @@
   "source": "https://github.com/camptocamp/puppet-osrm",
   "project_page": "https://github.com/camptocamp/puppet-osrm",
   "issues_url": "https://github.com/camptocamp/puppet-osrm/issues",
+  "dependencies": [
+  ],
   "requirements": [
     {
       "name": "puppet",
