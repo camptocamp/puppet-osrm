@@ -1,8 +1,14 @@
 require 'spec_helper'
 
 describe 'osrm' do
-  let(:facts) {{
-    :lsbdistcodename => 'wheezy',
-  }}
-  it { should compile.with_all_deps }
+
+  on_supported_os.each do |os, facts|
+    context "on #{os}" do
+      let(:facts) do
+        facts
+      end
+
+      it { should compile.with_all_deps }
+    end
+  end
 end
