@@ -7,7 +7,7 @@ class osrm ($ensure = present){
   }
 
   $d_ensure = $ensure? {
-    present => 'directory',
+    'present' => 'directory',
     default => $ensure
   }
 
