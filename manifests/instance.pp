@@ -1,9 +1,10 @@
 define osrm::instance (
   $data_dir,
-  $ensure  = 'present',
-  $threads = 8,
-  $ip      = '127.0.0.1',
-  $port    = '5000',
+  $ensure          = 'present',
+  $threads         = 8,
+  $ip              = '127.0.0.1',
+  $port            = '5000',
+  $additional_args = '-e 1',
 ) {
 
   $service_name = "osrm-${name}"

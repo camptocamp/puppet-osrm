@@ -16,7 +16,7 @@ DESC="high performance routing engine"
 NAME=osrm-<%= @name %>
 USER=osrm
 DAEMON=/usr/bin/osrm-routed
-DAEMON_ARGS="<%= @data_dir %>/<%= @name %>.osrm -i <%= @ip %> -p <%= @port %> -t <%= @threads %> -e 1"
+DAEMON_ARGS="<%= @data_dir %>/<%= @name %>.osrm -i <%= @ip %> -p <%= @port %> -t <%= @threads %> <%= @additional_args %>"
 LOGFILE=/var/log/osrm/$NAME.log
 PIDFILE=/var/run/$NAME.pid
 SCRIPTNAME=/etc/init.d/$NAME
