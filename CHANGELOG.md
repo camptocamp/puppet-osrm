@@ -1,3 +1,7 @@
+## 2017-01-20 - Release 1.1.0
+
+Remove Puppet 3 support
+
 ## 2015-08-21 - Release 1.0.9
 
 Use docker for acceptance tests
