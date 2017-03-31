@@ -13,12 +13,12 @@ class osrm ($ensure = present){
 
   package {'osrm':
     ensure => $ensure,
-  }->
-  user {'osrm':
+  }
+  -> user {'osrm':
     ensure => $ensure,
     system => true,
-  }->
-  file {'/var/log/osrm':
+  }
+  -> file {'/var/log/osrm':
     ensure => $d_ensure,
     owner  => 'osrm',
     group  => 'osrm',
